@@ -11,6 +11,7 @@ const Input = styled.input<IProps>`
 		height,
 	})}
 
+	display: block;
 	padding: 4px 6px;
 	border: 2px solid #333;
 	border-radius: 4px;
