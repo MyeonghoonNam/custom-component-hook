@@ -1,17 +1,10 @@
 import styled from '@emotion/styled';
 import useForm from '@hooks/useForm';
 import sleep from '@utils/sleep';
+import ContainerForm from './ContainerForm';
 import Input from './Input';
 import Button from './Button';
 import ErrorText from './ErrorText';
-
-const Container = styled.form`
-	width: 400px;
-	padding: 16px;
-	background-color: white;
-	box-shadow: 0 0 4px rgba(0, 0, 0, 0.2);
-	box-sizing: border-box;
-`;
 
 const Title = styled.h1`
 	font-size: 24px;
@@ -55,7 +48,7 @@ function SignUpForm() {
 	});
 
 	return (
-		<Container onSubmit={handleSubmit}>
+		<ContainerForm onSubmit={handleSubmit}>
 			<Title>SignUp</Title>
 			<Input
 				type="text"
@@ -97,7 +90,7 @@ function SignUpForm() {
 			>
 				SignUp
 			</Button>
-		</Container>
+		</ContainerForm>
 	);
 }
 
