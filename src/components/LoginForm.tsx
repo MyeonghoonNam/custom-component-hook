@@ -1,22 +1,10 @@
-import styled from '@emotion/styled';
 import useForm from '@hooks/useForm';
 import sleep from '@utils/sleep';
+import ContainerForm from './ContainerForm';
+import Title from './Title';
 import Input from './Input';
 import Button from './Button';
 import ErrorText from './ErrorText';
-
-const Container = styled.form`
-	width: 400px;
-	padding: 16px;
-	background-color: white;
-	box-shadow: 0 0 4px rgba(0, 0, 0, 0.2);
-	box-sizing: border-box;
-`;
-
-const Title = styled.h1`
-	font-size: 24px;
-	text-align: center;
-`;
 
 function LoginForm() {
 	const { errors, isLoading, handleChange, handleSubmit } = useForm({
@@ -50,7 +38,7 @@ function LoginForm() {
 	});
 
 	return (
-		<Container onSubmit={handleSubmit}>
+		<ContainerForm onSubmit={handleSubmit}>
 			<Title>Login</Title>
 			<Input
 				type="text"
@@ -80,7 +68,7 @@ function LoginForm() {
 			>
 				Login
 			</Button>
-		</Container>
+		</ContainerForm>
 	);
 }
 
