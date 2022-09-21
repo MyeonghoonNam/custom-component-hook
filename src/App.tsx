@@ -13,7 +13,16 @@ function App() {
 		<div>
 			<Box />
 			<br />
-			<Input type="text" width="150px" height="20px" />
+			<div
+				style={{
+					width: '200px',
+					height: '150px',
+					padding: '8px',
+					border: '1px solid black',
+				}}
+			>
+				<Input type="text" width="100%" height="20px" />
+			</div>
 			<br />
 			<Button width="100px" height="40px" onClick={handleClick}>
 				Login
