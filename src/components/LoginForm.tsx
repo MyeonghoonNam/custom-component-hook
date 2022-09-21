@@ -5,10 +5,6 @@ import Input from './Input';
 import Button from './Button';
 import ErrorText from './ErrorText';
 
-interface IValidate {
-	[key: string]: string;
-}
-
 const Container = styled.form`
 	width: 400px;
 	padding: 16px;
@@ -23,40 +19,34 @@ const Title = styled.h1`
 `;
 
 function LoginForm() {
-	const initialState = {
-		id: '',
-		password: '',
-	};
-
-	const validate = ({ id, password }: IValidate) => {
-		const newErrors: IValidate = {};
-
-		if (!id) {
-			newErrors.id = '아이디를 입력해주세요.';
-		}
-
-		if (!password) {
-			newErrors.password = '비밀번호를 입력해주세요.';
-		}
-
-		return newErrors;
-	};
-
-	const onSubmit = async () => {
-		try {
-			await sleep();
-			// eslint-disable-next-line no-console
-			console.log('submit success');
-		} catch (e) {
-			// eslint-disable-next-line no-console
-			console.log(e);
-		}
-	};
-
 	const { errors, isLoading, handleChange, handleSubmit } = useForm({
-		initialState,
-		validate,
-		onSubmit,
+		initialState: {
+			id: '',
+			password: '',
+		},
+		validate: ({ id, password }) => {
+			const newErrors: { [key: string]: string } = {};
+
+			if (!id) {
+				newErrors.id = '아이디를 입력해주세요.';
+			}
+
+			if (!password) {
+				newErrors.password = '비밀번호를 입력해주세요.';
+			}
+
+			return newErrors;
+		},
+		onSubmit: async () => {
+			try {
+				await sleep();
+				// eslint-disable-next-line no-console
+				console.log('submit success');
+			} catch (e) {
+				// eslint-disable-next-line no-console
+				console.log(e);
+			}
+		},
 	});
 
 	return (
