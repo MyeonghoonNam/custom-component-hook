@@ -29,6 +29,10 @@ const Button = styled.button<IProps>`
 	&:active {
 		background-color: #222;
 	}
+
+	&:disabled {
+		background-color: #888;
+	}
 `;
 
 export default Button;
