@@ -1,15 +1,10 @@
-import styled from '@emotion/styled';
 import useForm from '@hooks/useForm';
 import sleep from '@utils/sleep';
 import ContainerForm from './ContainerForm';
+import Title from './Title';
 import Input from './Input';
 import Button from './Button';
 import ErrorText from './ErrorText';
-
-const Title = styled.h1`
-	font-size: 24px;
-	text-align: center;
-`;
 
 function SignUpForm() {
 	const { errors, isLoading, handleChange, handleSubmit } = useForm({
