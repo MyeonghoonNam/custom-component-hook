@@ -5,7 +5,7 @@ export interface IProps {
 	children?: React.ReactNode;
 	block?: string;
 	paragraph?: string;
-	size?: string;
+	size?: string | number;
 	strong?: boolean;
 	underline?: boolean;
 	mark?: boolean;
