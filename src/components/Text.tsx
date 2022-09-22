@@ -31,7 +31,7 @@ function Text({
 	const tag = block ? 'div' : paragraph ? 'p' : 'span';
 
 	const Tag = styled(tag)`
-		font-size: ${size};
+		font-size: ${typeof size === 'number' ? `${size}px` : `${size}`};
 		strong: ${strong};
 		underline: ${underline};
 		color: ${color};
