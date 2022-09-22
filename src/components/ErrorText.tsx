@@ -1,8 +1,15 @@
-import styled from '@emotion/styled';
+import Text from './Text';
 
-const ErrorText = styled.span`
-	font-size: 12px;
-	color: red;
-`;
+export interface IProps {
+	children?: React.ReactNode;
+}
+
+function ErrorText({ children, ...props }: IProps) {
+	return (
+		<Text size="12px" color="red" {...props}>
+			{children}
+		</Text>
+	);
+}
 
 export default ErrorText;
