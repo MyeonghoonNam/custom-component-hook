@@ -32,8 +32,8 @@ function Text({
 
 	const Tag = styled(tag)`
 		font-size: ${typeof size === 'number' ? `${size}px` : `${size}`};
-		strong: ${strong};
-		underline: ${underline};
+		font-weight: ${strong ? 'bold' : 'normal'};
+		text-decoration: ${underline && 'underline'};
 		color: ${color};
 	`;
 
