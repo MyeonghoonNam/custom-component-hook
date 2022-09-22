@@ -17,10 +17,19 @@ export default {
 export function Default(args: IProps) {
 	return (
 		<div>
-			<Text {...args} style={{ color: 'blue' }}>
+			<Text {...args}>Test Text</Text>
+
+			<br />
+
+			<Text {...args} size="36px">
 				Text 1
 			</Text>
-			<Text {...args}>Text 2</Text>
+			<Text {...args} size="27px">
+				Text 2
+			</Text>
+			<Text {...args} size="18px">
+				Text 3
+			</Text>
 		</div>
 	);
 }
