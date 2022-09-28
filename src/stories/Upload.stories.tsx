@@ -47,3 +47,23 @@ export function Viewer() {
 		</>
 	);
 }
+
+export function DragAndDrop() {
+	return (
+		<Upload name="image" accept="image/*" droppable>
+			{(file, dragging) => (
+				<div
+					style={{
+						width: 300,
+						height: 100,
+						border: '4px dashed #aaa',
+						borderColor: dragging ? 'black' : '#aaa',
+						cursor: 'pointer',
+					}}
+				>
+					{file ? file.name : 'Click or Drag'}
+				</div>
+			)}
+		</Upload>
+	);
+}
