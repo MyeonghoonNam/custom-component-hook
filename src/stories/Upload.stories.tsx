@@ -1,6 +1,6 @@
 import Upload, { IProps } from '@components/Upload';
 import Image from '@components/Image';
-import React, { useState, useCallback } from 'react';
+import { useState, useCallback } from 'react';
 
 export default {
 	title: 'Components/Upload',
@@ -19,10 +19,9 @@ export function Default(args: IProps) {
 }
 
 export function Viewer() {
-	// const [file, setFile] = useState<File | null>(null);
 	const [viewImageSrc, setViewImageSrc] = useState('');
 
-	const handleChange = useCallback((e: React.ChangeEvent<HTMLInputElement>) => {
+	const handleChange = useCallback((file: File) => {
 		const reader = new FileReader();
 
 		reader.onloadend = () => {
@@ -33,14 +32,7 @@ export function Viewer() {
 			}
 		};
 
-		const { files } = e.target;
-		const chooseFile = files && files[0];
-
-		if (chooseFile) {
-			reader.readAsDataURL(chooseFile);
-			// file 정보에 대한 후속 비동기 처리가 필요할 경우 state로 file 정보 관리
-			// setFile(chooseFile);
-		}
+		reader.readAsDataURL(file);
 	}, []);
 
 	return (

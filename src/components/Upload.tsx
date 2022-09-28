@@ -1,11 +1,12 @@
 import styled from '@emotion/styled';
-import React, { useRef, useCallback } from 'react';
+import React, { useRef, useState, useCallback } from 'react';
 
+type TChildren = (file: File | null) => React.ReactNode;
 export interface IProps {
-	children: React.ReactNode;
+	children: React.ReactNode | TChildren;
 	name: string;
 	accept: string;
-	onChange?: (e: React.ChangeEvent<HTMLInputElement>) => void;
+	onChange?: (file: File) => void;
 }
 
 const Container = styled.div`
@@ -16,8 +17,25 @@ const Input = styled.input`
 	display: none;
 `;
 
-function Upload({ children, name, accept, onChange, ...props }: IProps) {
+function Upload({ children, name, onChange, accept, ...props }: IProps) {
+	const [file, setFile] = useState<File | null>(null);
 	const inputRef = useRef<HTMLInputElement>(null);
+
+	const handleChange = useCallback(
+		(e: React.ChangeEvent<HTMLInputElement>) => {
+			const { files } = e.target;
+
+			if (files) {
+				const chooseFile = files[0];
+				setFile(() => chooseFile);
+
+				if (onChange) {
+					onChange(chooseFile);
+				}
+			}
+		},
+		[onChange],
+	);
 
 	const handleClick = useCallback(() => {
 		if (inputRef.current) {
@@ -32,9 +50,9 @@ function Upload({ children, name, accept, onChange, ...props }: IProps) {
 				type="file"
 				name={name}
 				accept={accept}
-				onChange={onChange}
+				onChange={handleChange}
 			/>
-			{children}
+			{typeof children === 'function' ? children(file) : children}
 		</Container>
 	);
 }
