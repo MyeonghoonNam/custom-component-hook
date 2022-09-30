@@ -1,4 +1,4 @@
-import Image, { IProps } from '@components/Image';
+import Image, { Props } from '@components/Image';
 
 export default {
 	title: 'Components/Image',
@@ -41,7 +41,7 @@ export default {
 	},
 };
 
-export function Default(args: IProps) {
+export function Default(args: Props) {
 	return (
 		<div>
 			<Image {...args} />
@@ -50,7 +50,7 @@ export function Default(args: IProps) {
 	);
 }
 
-export function Lazy(args: IProps) {
+export function Lazy(args: Props) {
 	return (
 		<div>
 			{Array.from(new Array(20), (_, k) => k).map((i) => (
