@@ -1,7 +1,8 @@
 import styled from '@emotion/styled';
+import { css } from '@emotion/react';
 import { useState, useRef, useEffect } from 'react';
 
-export interface IProps {
+export interface Props {
 	src: string;
 	width: number | string;
 	height: number | string;
@@ -26,6 +27,17 @@ const onIntersection: IntersectionObserverCallback = (entries, io) => {
 	});
 };
 
+type ContainerProps = Pick<Props, 'block' | 'width' | 'height' | 'mode'>;
+
+const Container = styled.img<ContainerProps>`
+	${({ block, width, height, mode }) => css`
+		display: ${block && 'block'};
+		width: ${typeof width === 'number' ? `${width}px` : width};
+		height: ${typeof height === 'number' ? `${height}px` : height};
+		object-fit: ${mode};
+	`}
+`;
+
 function Image({
 	src,
 	width,
@@ -37,7 +49,7 @@ function Image({
 	threshold = 0.5,
 	placeholder,
 	...props
-}: IProps) {
+}: Props) {
 	const [loaded, setLoaded] = useState(false);
 	const imgRef = useRef<HTMLImageElement>(null);
 
@@ -74,19 +86,16 @@ function Image({
 		}
 	}, [lazy, threshold]);
 
-	const Img = styled.img`
-		display: ${block && 'block'};
-		width: ${typeof width === 'number' ? `${width}px` : width};
-		height: ${typeof height === 'number' ? `${height}px` : height};
-		object-fit: ${mode};
-	`;
-
 	return (
-		<Img
+		<Container
 			ref={imgRef}
 			src={loaded ? src : placeholder}
 			alt={alt}
-			style={{ ...props.style }}
+			width={width}
+			height={height}
+			mode={mode}
+			block={block}
+			{...props}
 		/>
 	);
 }
