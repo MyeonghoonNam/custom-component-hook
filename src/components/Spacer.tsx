@@ -3,9 +3,9 @@ import styled from '@emotion/styled';
 
 export interface IProps {
 	children: React.ReactNode;
-	type: string;
-	size: number | string;
-	style: React.CSSProperties;
+	type?: string;
+	size?: number | string;
+	style?: React.CSSProperties;
 }
 
 function Spacer({ children, type = 'horizontal', size = 8, ...props }: IProps) {
