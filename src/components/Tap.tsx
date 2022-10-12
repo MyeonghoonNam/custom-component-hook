@@ -54,14 +54,18 @@ function Tab({ children, active }: Props) {
 	}, [children, currentActive]);
 
 	const activeItem = useMemo(
-		() => items.find((element) => currentActive === element?.props.index),
+		() =>
+			items.find(
+				(element) =>
+					currentActive === (element as React.ReactElement)?.props.index,
+			),
 		[currentActive, items],
-	);
+	) as React.ReactElement;
 
 	return (
 		<TabContainer>
 			<TabItemContainer>{items}</TabItemContainer>
-			<div>{activeItem?.props.children}</div>
+			<div>{activeItem.props.children}</div>
 		</TabContainer>
 	);
 }
