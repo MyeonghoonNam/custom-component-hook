@@ -5,6 +5,7 @@ export interface IProps {
 	height: number | string;
 	block?: boolean;
 	backgroundColor?: string;
+	style?: React.CSSProperties;
 }
 
 function Box({
@@ -17,12 +18,8 @@ function Box({
 	const Container = styled.div`
 		display: ${block ? 'block' : 'inline-block'};
 		width: ${typeof width === 'number' ? `${width}px` : width};
-		height: ${typeof height === 'number' ? `${width}px` : width};
+		height: ${typeof height === 'number' ? `${height}px` : height};
 		background-color: ${backgroundColor};
-
-		${({ style }) => ({
-			...style,
-		})}
 	`;
 
 	return <Container {...props} />;
