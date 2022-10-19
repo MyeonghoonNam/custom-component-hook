@@ -53,6 +53,14 @@
 			"FunctionExpression",
 			"WithStatement",
 			"BinaryExpression[operator='in']"
+		],
+		"@typescript-eslint/ban-types": [
+			"error",
+			{
+				"types": {
+					"{}": false
+				}
+			}
 		]
 	},
 	"settings": {
