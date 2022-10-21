@@ -1,4 +1,4 @@
-import Input, { IProps } from '@components/Input';
+import Input, { Props } from '@components/Input';
 
 export default {
 	title: 'Components/Input',
@@ -9,6 +9,6 @@ export default {
 	},
 };
 
-export function Default(args: IProps) {
+export function Default(args: Props) {
 	return <Input {...args} />;
 }
