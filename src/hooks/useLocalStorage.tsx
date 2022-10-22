@@ -1,7 +1,7 @@
 /* eslint-disable no-console */
 import { useState } from 'react';
 
-const useLocalStorage = (key: string) => {
+const useLocalStorage = <T extends {}>(key: string) => {
 	const [value, setValue] = useState(() => {
 		try {
 			const item = localStorage.getItem(key);
@@ -11,7 +11,7 @@ const useLocalStorage = (key: string) => {
 		}
 	});
 
-	const setLocalStorageValue = (value: object) => {
+	const setLocalStorageValue = (value: T) => {
 		try {
 			setValue(value);
 			localStorage.setItem(key, JSON.stringify(value));
