@@ -2,8 +2,8 @@ import styled from '@emotion/styled';
 import { css } from '@emotion/react';
 
 export interface Props {
-	type: 'horizontal' | 'vertical';
-	size: number;
+  type: 'horizontal' | 'vertical';
+  size: number;
 }
 
 type ContainerProps = Pick<Props, 'size'>;
@@ -21,8 +21,8 @@ const Container = styled.hr<ContainerProps>`
     vertical-align: middle;
 
     ${({ size }) => css`
-			margin: 0 ${size}px;
-		`}
+      margin: 0 ${size}px;
+    `}
   }
 
   &.horizontal {
@@ -31,13 +31,13 @@ const Container = styled.hr<ContainerProps>`
     height: 1px;
 
     ${({ size }) => css`
-			margin: ${size}px 0;
-		`}
+      margin: ${size}px 0;
+    `}
   }
 `;
 
 function Divider({ type, ...props }: Props) {
-	return <Container className={type} {...props} />;
+  return <Container className={type} {...props} />;
 }
 
 export default Divider;

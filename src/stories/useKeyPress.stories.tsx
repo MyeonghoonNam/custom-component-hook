@@ -1,11 +1,11 @@
 import useKeyPress from '@hooks/useKeyPress';
 
 export default {
-	title: 'Hooks/useKeyPress',
+  title: 'Hooks/useKeyPress',
 };
 
 export function Default() {
-	const pressed = useKeyPress('?');
+  const pressed = useKeyPress('?');
 
-	return <div>{pressed ? 'Peek-A-Boo' : 'Press ? key'}</div>;
+  return <div>{pressed ? 'Peek-A-Boo' : 'Press ? key'}</div>;
 }

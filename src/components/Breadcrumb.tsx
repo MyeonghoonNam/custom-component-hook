@@ -3,30 +3,30 @@ import React from 'react';
 import BreadcrumbItem from './BreadcrumbItem';
 
 const Container = styled.div`
-	display: inline-block;
+  display: inline-block;
 `;
 
 export interface Props {
-	children: React.ReactNode;
+  children: React.ReactNode;
 }
 
 function Breadcrumb({ children, ...props }: Props) {
-	const items = React.Children.toArray(children).map(
-		(element, index, elements) => {
-			let item;
+  const items = React.Children.toArray(children).map(
+    (element, index, elements) => {
+      let item;
 
-			if (React.isValidElement(element)) {
-				item = React.cloneElement(element, {
-					...element.props,
-					active: index === elements.length - 1,
-				});
-			}
+      if (React.isValidElement(element)) {
+        item = React.cloneElement(element, {
+          ...element.props,
+          active: index === elements.length - 1,
+        });
+      }
 
-			return item;
-		},
-	);
+      return item;
+    },
+  );
 
-	return <Container {...props}>{items}</Container>;
+  return <Container {...props}>{items}</Container>;
 }
 
 Breadcrumb.Item = BreadcrumbItem;
